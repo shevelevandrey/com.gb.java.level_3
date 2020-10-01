@@ -42,7 +42,7 @@ public class Server {
             clientHandler.sendMessage(incomingMessage);
         } else {
             for (ClientHandler ch : clientHandlers) {
-                if (ch.getClient().getName().equals(recipient)) {
+                if (ch.getClient().getLogin().equals(recipient)) {
                     ch.sendMessage(incomingMessage);
                 }
             }

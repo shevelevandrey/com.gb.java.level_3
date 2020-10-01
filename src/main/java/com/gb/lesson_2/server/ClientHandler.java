@@ -64,7 +64,7 @@ public class ClientHandler {
                 if (client != null) {
                     if (!server.getClientServices().isClientAuthorized(client)) {
                         socket.setSoTimeout(0);
-                        sendMessage("Status: authok.");
+                        sendMessage(String.format("Status: %s authok.", client.getLogin()));
 
                         server.broadcast(this, "", String.format("%s came in.", client.getName()));
                         System.out.println("Client auth completed.");

@@ -14,13 +14,13 @@ public class ClientApplicationSendMessages {
         List<Map<String, String>> messageList = new ArrayList<>();
 
         Map<String, String> messageBox1 = new HashMap<>();
-        messageBox1.put("user", "u1");
+        messageBox1.put("user", "l1");
         messageBox1.put("message", "Hello, user1!");
         messageBox1.put("is_send", "");
         messageList.add(messageBox1);
 
         Map<String, String> messageBox2 = new HashMap<>();
-        messageBox2.put("user", "u2");
+        messageBox2.put("user", "l2");
         messageBox2.put("message", "Hello, user2!");
         messageBox2.put("is_send", "");
         messageList.add(messageBox2);
