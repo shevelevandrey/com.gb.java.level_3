@@ -8,16 +8,16 @@ import java.util.Set;
 
 public class Server {
     private Set<ClientHandler> clientHandlers;
-    private AuthenticationService authenticationService;
+    private ClientServices clientServices;
 
     public Server() {
         this.clientHandlers = new HashSet<>();
-        this.authenticationService = new AuthenticationService();
+        this.clientServices = new ClientServices();
         start(8888);
     }
 
-    public AuthenticationService getAuthenticationService() {
-        return authenticationService;
+    public ClientServices getClientServices() {
+        return clientServices;
     }
 
     private void start(int port) {

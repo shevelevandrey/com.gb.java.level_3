@@ -11,7 +11,7 @@ import java.util.Objects;
  * Represents client session
  */
 public class ClientHandler {
-    private AuthenticationService.Client client;
+    private ClientServices.Client client;
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
@@ -30,7 +30,7 @@ public class ClientHandler {
         this.server = server;
     }
 
-    public AuthenticationService.Client getClient() {
+    public ClientServices.Client getClient() {
         return client;
     }
 
@@ -56,13 +56,13 @@ public class ClientHandler {
             if (loginInfo.startsWith("-auth")) {
                 // -auth l1 p1
                 String[] splittedLoginInfo = loginInfo.split("\\s");
-                client = server.getAuthenticationService()
+                client = server.getClientServices()
                         .findClient(
                                 splittedLoginInfo[1],
                                 splittedLoginInfo[2]
                         );
                 if (client != null) {
-                    if (!server.getAuthenticationService().isClientAuthorized(client)) {
+                    if (!server.getClientServices().isClientAuthorized(client)) {
                         socket.setSoTimeout(0);
                         sendMessage("Status: authok.");
 
@@ -70,7 +70,7 @@ public class ClientHandler {
                         System.out.println("Client auth completed.");
                         server.subscribe(this);
 
-                        server.getAuthenticationService().updateSessionStatus(client, AuthenticationService.authorized);
+                        server.getClientServices().updateSessionStatus(client, ClientServices.authorized);
                         return;
                     } else {
                         sendMessage(String.format("%s already logged in.", client.getName()));
@@ -87,7 +87,7 @@ public class ClientHandler {
         server.broadcast(this, "", String.format("%s left chat", (client != null) ? client.getName() : "You"));
 
         if (client != null) {
-            server.getAuthenticationService().updateSessionStatus(client, AuthenticationService.notAuthorized);
+            server.getClientServices().updateSessionStatus(client, ClientServices.notAuthorized);
         }
 
         try {
@@ -132,7 +132,7 @@ public class ClientHandler {
             }
             if (message.contains("-rename")) {
                 String[] splittedMessage = message.split("\\s");
-                server.getAuthenticationService().renameClientLogin(client, splittedMessage[1]);
+                server.getClientServices().renameClientLogin(client, splittedMessage[1]);
 
                 formatterMessage = String.format("Your login has been changed to \"%s\".", splittedMessage[1]);
             }

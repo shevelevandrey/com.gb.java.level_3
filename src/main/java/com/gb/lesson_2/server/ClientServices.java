@@ -7,11 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AuthenticationService {
+public class ClientServices {
     public static int authorized = 1;
     public static int notAuthorized = 2;
 
-    public AuthenticationService() {
+    public ClientServices() {
     }
 
     public Client findClient(String login, String password) {
