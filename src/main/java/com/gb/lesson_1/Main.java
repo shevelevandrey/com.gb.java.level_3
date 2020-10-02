@@ -4,6 +4,7 @@ import com.gb.lesson_1.generic.Apple;
 import com.gb.lesson_1.generic.Box;
 import com.gb.lesson_1.generic.Fruit;
 import com.gb.lesson_1.generic.Orange;
+import org.w3c.dom.ls.LSOutput;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,6 +45,26 @@ public class Main {
         apples.engulf(apples2);
         System.out.println("Коробка [apples2] " + apples2);
         System.out.println("Коробка [apples] " + apples);
+        System.out.println();
+
+        System.out.println("Сравниваем вес коробки с яблоками с коробкой с апельсинами:");
+        System.out.println("Вес коробки с яблоками: " + apples.getWeight());
+        System.out.println("Вес коробки с апельсинами: " + oranges.getWeight());
+        System.out.println(apples.compare(oranges));
+        System.out.println();
+
+        System.out.println("Яблоки тяжелее, отсыпаем яблоки и повторяем процедуру сравнения:");
+
+        apples.takeOut();
+        apples.takeOut();
+        apples.takeOut();
+        apples.takeOut();
+        apples.takeOut();
+
+        System.out.println("Вес коробки с яблоками: " + apples.getWeight());
+        System.out.println("Вес коробки с апельсинами: " + oranges.getWeight());
+        System.out.println(apples.compare(oranges));
+        System.out.println();
 
     }
 }
