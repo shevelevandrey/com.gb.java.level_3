@@ -26,7 +26,7 @@ public class Box<T extends Fruit> {
     }
 
     public void add (T element) {
-        if (elements.iterator().hasNext()) {
+        if (!elements.isEmpty()) {
             if (elements.iterator().next().getClass() == element.getClass()) {
                 elements.add(element);
             } else {
