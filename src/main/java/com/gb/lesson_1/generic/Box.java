@@ -8,21 +8,16 @@ public class Box<T extends Fruit> {
 
     public Box(T element, int count) {
         elements = new ArrayList<>();
-        if (count > 0) {
-            for (int i = 0; i < count; i++) {
-                elements.add(element);
-            }
+        for (int i = 0; i < count; i++) {
+            elements.add(element);
         }
-
     }
 
     public float getWeight() {
         float weight = 0F;
-
         for (T e: elements) {
             weight += e.getWeigth();
         }
-
         return weight;
     }
 
@@ -34,12 +29,15 @@ public class Box<T extends Fruit> {
         if (elements.iterator().hasNext()) {
             if (elements.iterator().next().getClass() == element.getClass()) {
                 elements.add(element);
-                System.out.println("Элемент [" + element + "], добавлен в коробку.");
             } else {
                 System.out.println("В данной коробке могут находяться только элементы типа [" + elements.iterator().next().getClass().getSimpleName()
                         + "], поэтому добавить элемент типа [" + element.getClass().getSimpleName() + "] не представляется возможным.");
+                return;
             }
+        } else {
+            elements.add(element);
         }
+        System.out.println("Элемент [" + element + "], добавлен в коробку.");
     }
 
     public void engulf(Box<T> box) {
