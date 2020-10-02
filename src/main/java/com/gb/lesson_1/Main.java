@@ -4,7 +4,6 @@ import com.gb.lesson_1.generic.Apple;
 import com.gb.lesson_1.generic.Box;
 import com.gb.lesson_1.generic.Fruit;
 import com.gb.lesson_1.generic.Orange;
-import org.w3c.dom.ls.LSOutput;
 
 public class Main {
     public static void main(String[] args) {
