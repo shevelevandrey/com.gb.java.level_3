@@ -6,6 +6,7 @@ import java.util.List;
 public class Logger {
     private String currentLetter = "A";
     private int replayCount = 3;
+    private int timeout = 500;
 
     public static void main(String[] args) {
         Logger logger = new Logger();
@@ -36,6 +37,13 @@ public class Logger {
                     e.printStackTrace();
                 }
             }
+
+            try {
+                Thread.sleep(timeout);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.print(currentLetter);
             currentLetter = "B";
             notifyAll();
@@ -52,6 +60,13 @@ public class Logger {
                     e.printStackTrace();
                 }
             }
+
+            try {
+                Thread.sleep(timeout);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.print(currentLetter);
             currentLetter = "C";
             notifyAll();
@@ -68,6 +83,13 @@ public class Logger {
                     e.printStackTrace();
                 }
             }
+
+            try {
+                Thread.sleep(timeout);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.print(currentLetter);
             currentLetter = "A";
             notifyAll();
